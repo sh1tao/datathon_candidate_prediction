@@ -1,0 +1,97 @@
+{
+  "id": null,
+  "title": "API de Predi\u00e7\u00e3o - Monitoramento Avan\u00e7ado",
+  "timezone": "browser",
+  "schemaVersion": 30,
+  "version": 2,
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Total de Requisi\u00e7\u00f5es",
+      "targets": [
+        {
+          "expr": "sum(http_requests_total)",
+          "legendFormat": "Requisi\u00e7\u00f5es"
+        }
+      ],
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 6
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Tempo M\u00e9dio de Resposta (seg)",
+      "targets": [
+        {
+          "expr": "rate(http_request_duration_seconds_sum[1m]) / rate(http_request_duration_seconds_count[1m])",
+          "legendFormat": "M\u00e9dia"
+        }
+      ],
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 6
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Probabilidade M\u00e9dia Prevista",
+      "targets": [
+        {
+          "expr": "rate(probabilidade_prevista_sum[1m]) / rate(probabilidade_prevista_count[1m])",
+          "legendFormat": "Prob M\u00e9dia"
+        }
+      ],
+      "gridPos": {
+        "x": 0,
+        "y": 6,
+        "w": 12,
+        "h": 6
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Candidatos Contratados",
+      "targets": [
+        {
+          "expr": "candidatos_contratados_total",
+          "legendFormat": "Contratados"
+        }
+      ],
+      "gridPos": {
+        "x": 12,
+        "y": 6,
+        "w": 12,
+        "h": 6
+      }
+    },
+    {
+      "type": "graph",
+      "title": "Requisi\u00e7\u00f5es por segundo",
+      "targets": [
+        {
+          "expr": "rate(http_requests_total[1m])",
+          "legendFormat": "{{method}} {{path}}",
+          "interval": "30s"
+        }
+      ],
+      "gridPos": {
+        "x": 0,
+        "y": 12,
+        "w": 24,
+        "h": 10
+      }
+    }
+  ],
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": []
+  },
+  "refresh": "10s"
+}
