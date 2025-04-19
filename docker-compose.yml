@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api_predicao
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./model:/app/model
+      - ./src:/app/src
+    working_dir: /app/src
+    command: python predict_api.py
+    restart: unless-stopped

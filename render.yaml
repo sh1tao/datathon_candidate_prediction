@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: api-predicao
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: uvicorn predict_api:app --host 0.0.0.0 --port 8000
+    runtime: python
+    region: oregon
+    rootDir: src
+    autoDeploy: true
