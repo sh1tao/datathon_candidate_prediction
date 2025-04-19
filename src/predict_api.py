@@ -60,13 +60,6 @@ def predict(candidate: Candidate):
     }
 
 
-@app.get("/", response_class=HTMLResponse)
-def serve_form():
-    with open("../templates/index.html", "r", encoding="utf-8") as f:
-        html_content = f.read()
-    return HTMLResponse(content=html_content, status_code=200)
-
-
 if __name__ == "__main__":
     import uvicorn
 
